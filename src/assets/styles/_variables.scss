@@ -1,0 +1,62 @@
+// Colors
+$primary-color: #0C75F6;
+$secondary-color: #00AEEF;
+$accent-color: #0CECB2;
+
+$blue-100: #e8f2fe;
+$blue-200: #bcd9fc;
+$blue-300: #90c0fa;
+$blue-400: #64a7f9;
+$blue-500: #0c75f6;
+$blue-600: #0a60ca;
+$blue-700: #084b9d;
+$blue-800: #063670;
+
+$success-color: #2ecc71;
+$info-color: #6b8dff;
+$warning-color: #FFD422;
+$danger-color: #ff5e5b;
+
+$light-50: #f7f8fa;
+$light-100: #d6dde5;
+$dark: #2B304A;
+
+$gray-200: #B3BAC4;
+$gray-300: #999FAA;
+$gray-400: #797F8C;
+$gray-500: #5F6777;
+$gray-600: #515768;
+$gray-700: #43495E;
+$gray-800: #383E56;
+
+// Fonts
+//
+$font-primary: 'Open Sans', futura-pt-condensed, sans-serif;
+$font-secondary: 'Fira Sans Condensed', sans-serif;
+
+// -----------------------------------------------------------------------------
+// Bootstrap Resets
+// -----------------------------------------------------------------------------
+
+// Color system
+$theme-colors: (
+  "primary":    $primary-color,
+  "secondary":  $secondary-color,
+  "accent":     $accent-color,
+  "success":    $success-color,
+  "info":       $info-color,
+  "warning":    $warning-color,
+  "danger":     $danger-color,
+  "light":      $light-50,
+  "dark":       $dark,
+);
+
+//grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+);

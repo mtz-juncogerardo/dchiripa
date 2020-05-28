@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/base';
+@import "~node_modules/bootstrap/scss/mixins";
+
+
+// Slick Carousel Styles Are made global beacuse if they are not declare here they dont work.
+.slide{
+  outline: none;
+}
+
+.home-slider-next, .home-slider-prev{
+  width: 80px;
+  height: 20rem;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i{
+    @include media-breakpoint-up(lg){
+      display: block;
+    }
+    display: none;
+    position: relative;
+    z-index: 100;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+.home-slider-prev{
+  left: 0;
+
+  i{
+    transform: scaleX(-1);
+  }
+}
+
+.home-slider-next{
+  right: 0;
+}
+
+.hero-dots {
+  background: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2rem;
+  margin-bottom: 0;
+  text-align: center;
+
+  li {
+    display: inline;
+
+    &.slick-active {
+      button {
+        opacity: 1;
+        width: 48px;
+      }
+    }
+
+    button {
+      display: inline-block;
+      height: 4px;
+      width: 8px;
+      margin: 0 4px;
+      font-size: 0;
+      padding: 0;
+      background-color: white;
+      border: 0;
+      border-radius: 8px;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+      transition: width 0.3s ease;
+    }
+  }
+}

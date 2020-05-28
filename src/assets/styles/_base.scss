@@ -1,0 +1,25 @@
+@import './variables';
+
+:root, body {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Open Sans';
+  color: $dark;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+*, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+  background: white;
+}
+body::-webkit-scrollbar-thumb {
+  background: $dark;
+}
