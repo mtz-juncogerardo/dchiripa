@@ -6,6 +6,8 @@ import { environment } from '../../environments/environment';
 import { ComponentsModule } from '../core/components/components.module';
 import { ProductsComponent } from './products/products.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     ComponentsModule,
     AdministratorRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'dchiripa'),
     ReactiveFormsModule
-  ]
+  ],
+  providers: [AngularFireStorage]
 })
 export class AdministratorModule { }

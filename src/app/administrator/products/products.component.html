@@ -1,66 +1,147 @@
-<form [formGroup]="productForm" (ngSubmit)="addProduct(productForm.value)">
-  <div class="form-group">
-    <label for="name">Nombre del Producto</label>
-    <input formControlName="name" id="name" type="text" class="form-control" placeholder="Nombre del producto">
-  </div>
-  <div class="form-group">
-    <label for="category">Escoge la Categoria</label>
-    <select formControlName="category" class="form-control" id="category">
-      <option>Tablas</option>
-      <option>Ruedas</option>
-      <option>Trucks</option>
-      <option>Tornillos</option>
-      <option>Tennis</option>
-      <option>Gorras</option>
-      <option>Ceras</option>
-      <option>Baleros</option>
-      <option>Playeras</option>
-      <option>Mochilas</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="stock">Stock</label>
-    <input formControlName="stock"  id="stock" type="number" class="form-control" placeholder="¿Cuantas en stock?" value="1" min="1">
-  </div>
-  <div class="form-group">
-    <label for="description">Descripción</label>
-    <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="price">Precio</label>
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">$</div>
+<section class="products">
+  <table class="table table-light">
+    <thead>
+    <tr>
+      <th scope="row">Añadir Producto</th>
+      <th>
+        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addProductModal">Agregar</button>
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Precio Neto</th>
+      <th scope="col">En Descuento?</th>
+      <th scope="col">Precio con Descuento</th>
+      <th scope="col">Imagen Frontal</th>
+      <th scope="col">Imagen Trasera</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let entity of entities">
+      <th scope="row">{{ entity?.id | slice:0:5}}</th>
+      <td>{{ entity?.category }}</td>
+      <td>{{ entity?.name }}</td>
+      <td>{{ entity?.description | slice:0:30}}...</td>
+      <td>{{ entity?.price | currency:'MXN'}}</td>
+      <td>{{ entity?.descount ? 'SI' : 'NO' }}</td>
+      <td>{{ entity?.descountPrice | currency:'MXN' }}</td>
+      <td>
+        <img [src]="entity?.imageFront" alt="front">
+      </td>
+      <td>
+        <img [src]="entity?.imageFront" alt="front">
+      </td>
+      <td>{{ entity?.stock }}</td>
+      <td>
+        <button (click)="updateProduct(entity)" class="btn btn-warning btn-sm">Editar</button>
+      </td>
+      <td>
+        <button (click)="deleteProduct(entity.id)" class="btn btn-danger btn-sm">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Añadir Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <input formControlName="price" type="text" class="form-control" id="price" placeholder="Precio">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input formControlName="descount" class="form-check-input" type="checkbox" id="descount">
-      <label class="form-check-label" for="descount">
-        Producto en Descuento
-      </label>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="descountPrice">Precio de Descuento</label>
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">$</div>
+      <div class="modal-body">
+
+        <form [formGroup]="productForm">
+          <div class="form-group">
+            <label for="name">Nombre del Producto</label>
+            <input formControlName="name" id="name" type="text" class="form-control" placeholder="Nombre del producto">
+          </div>
+          <div class="form-group">
+            <label for="category">Escoge la Categoria</label>
+            <select formControlName="category" class="form-control" id="category">
+              <option>Tablas</option>
+              <option>Ruedas</option>
+              <option>Trucks</option>
+              <option>Tornillos</option>
+              <option>Tennis</option>
+              <option>Gorras</option>
+              <option>Ceras</option>
+              <option>Baleros</option>
+              <option>Playeras</option>
+              <option>Mochilas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stock">Stock</label>
+            <input formControlName="stock" id="stock" type="number" class="form-control"
+                   placeholder="¿Cuantas en stock?" value="1" min="1">
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="price">Precio</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input formControlName="price" type="number" class="form-control" id="price" placeholder="Precio">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input (change)="loadImage($event, 'front')" type="file" class="custom-file-input"
+                     id="imageFront" accept=".png,.jpg">
+              <label class="custom-file-label" for="imageFront">Cargar Imagen Frontal</label>
+              <img id="frontImage" *ngIf="frontImageURL" [src]="frontImageURL | async" alt="">
+            </div>
+            <div class="custom-file">
+              <input (change)="loadImage($event, 'back')" type="file" class="custom-file-input"
+                     id="imageBack" accept=".png,.jpg">
+              <label class="custom-file-label" for="imageBack">Cargar Imagen Trasera</label>
+              <img id="backImage" *ngIf="backImageURL" [src]="backImageURL | async" alt="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check">
+              <input formControlName="descount" class="form-check-input" type="checkbox" id="descount">
+              <label class="form-check-label" for="descount">
+                Producto en Descuento
+              </label>
+            </div>
+          </div>
+          <div *ngIf="productForm.get('descount').value" class="form-group">
+            <label class="sr-only" for="descountPrice">Precio de Descuento</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input formControlName="descountPrice" type="text"
+                     class="form-control" id="descountPrice" placeholder="Precio de descuento">
+            </div>
+          </div>
+        </form>
+
       </div>
-      <input formControlName="descountPrice" type="text" class="form-control" id="descountPrice" placeholder="Precio de descuento">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+        <button (click)="addProduct(productForm.value)" class="btn btn-success"
+                [disabled]="productForm.invalid || !frontImageURL || blockButton">
+          {{ blockButton ? 'Cargando Imagen' : 'Añadir Producto' }}
+        </button>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <div class="custom-file">
-      <input formControlName="imageFront" type="file" class="custom-file-input" id="imageFront">
-      <label class="custom-file-label" for="imageFront">Cargar Imagen Frontal</label>
-    </div>
-    <div class="custom-file">
-      <input formControlName="imageBack" type="file" class="custom-file-input" id="imageBack">
-      <label class="custom-file-label" for="imageBack">Cargar Imagen Trasera</label>
-    </div>
-  </div>
-  <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

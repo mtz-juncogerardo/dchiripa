@@ -27,6 +27,10 @@ export class FirebaseService {
     }));
   }
 
+  getProducts(){
+    return this.productsCollection.get();
+  }
+
   addProduct(product: Product){
     return this.productsCollection.add(product);
   }
@@ -34,5 +38,10 @@ export class FirebaseService {
   updateProduct(product: Product){
     this.productDoc = this.afs.doc(`products/${product.id}`);
     return this.productDoc.update(product);
+  }
+
+  deleteProduct(id: string){
+    this.productDoc = this.afs.doc(`products/${id}`);
+    return this.productDoc.delete();
   }
 }

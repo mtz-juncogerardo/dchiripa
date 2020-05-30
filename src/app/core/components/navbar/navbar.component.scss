@@ -13,6 +13,7 @@
 
 .navbar{
  height: 100%;
+ min-height: 100vh;
  padding: 2rem 0rem;
  background-color: $dark;
  transition: width 0.2s ease;
