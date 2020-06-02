@@ -104,7 +104,7 @@ export class ProductsComponent implements OnInit {
   loadImage(event: any, imagePosition: string) {
     const randomId = Math.random().toString(36).substring(2);
     const file = event.target.files[0];
-    const filePath = `products/${randomId}`;
+    const filePath = `products/${randomId}-${imagePosition}`;
     const fileRef = this.afs.ref(filePath);
     const task = this.afs.upload(filePath, file);
     // Block Sumbit Button until image has been uploaded
