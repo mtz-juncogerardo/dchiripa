@@ -18,8 +18,8 @@ export class HomepageComponent implements OnInit {
     dotsClass: 'hero-dots',
     pauseOnDotsHover: true,
     pauseOnHover: false,
-    "nextArrow": "<div class='nav-next home-slider-next'><i class='fas fa-directions'></i></i></div>",
-    "prevArrow": "<div class='nav-prev home-slider-prev'><i class='fas fa-directions'></i></div>",
+    "nextArrow": "<div class='nav-next home-slider-next'><i class='fas fa-caret-right'></i></i></div>",
+    "prevArrow": "<div class='nav-prev home-slider-prev'><i class='fas fa-caret-right'></i></div>",
   };
 
   constructor() { }

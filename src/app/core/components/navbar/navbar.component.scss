@@ -8,7 +8,7 @@
 
 .router-link-active{
   filter: grayscale(0%);
-  background-color: $gray-800;
+  background-color: $gray-900;
 }
 
 .navbar{
@@ -40,12 +40,12 @@
 
      i{
        font-size: 32px;
-       color: $info-color;
+       color: $secondary-color;
      }
 
      &:hover{
        filter: grayscale(0%);
-       background-color: $gray-800;
+       background-color: $gray-900;
      }
    }
 

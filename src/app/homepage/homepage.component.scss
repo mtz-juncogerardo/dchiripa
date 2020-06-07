@@ -1,168 +1,66 @@
-@import url("https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 @import "~node_modules/bootstrap/scss/mixins";
 @import "../../assets/styles/mixins";
 @import "../../assets/styles/variables";
 
-// Slick carousel styles are on ./styles.scss
-
-section {
-  margin-bottom: 2rem;
-}
-
 .navbar {
-  &_logo {
-    @include flex(column, center, center);
+  &_nav {
+    padding: 24px 0px;
+  }
 
-    img {
-      @include wh(5rem);
-      object-fit: contain;
-      margin-bottom: 0.5rem;
+  &_menu, &_shop-menu {
+    @include flex(row, flex-end, center);
+
+    li, button {
+      margin: 0px 16px;
+      @include flex(row, space-between, center);
+
+      span {
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
 
-    span {
-      font-size: 0.75rem;
-      font-family: "Chelsea Market", cursive;
+    i {
+      font-size: 24px;
+      margin-right: 0.5rem;
     }
   }
 
-  &_icons {
-    @include flex(row, center, center);
-
-    i {
-      font-size: 1.5rem;
-    }
-
-    &--login {
-      margin-right: 1.5rem;
-      @include flex(column, center, center);
-    }
+  &_menu {
+    border-right: 1px solid $dark;
   }
 }
 
 .carousel {
-  &_container {
-    @include height(20rem);
-    @include width(100%);
+  margin-bottom: 96px;
+
+  &_slide {
+    @include height(420px);
+    @include background-image(cover, center);
+    background-color: $dark;
+    width: 100vw;
+  }
+
+  &_text{
+    @include wh(100%);
     @include flex(column, center, center);
     text-align: center;
-    position: relative;
-    z-index: 2;
 
-    &_bg {
-      border-radius: 2rem;
-      z-index: 1;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      object-fit: cover;
-      filter: contrast(50%) saturate(130%);
-    }
-
-    &_title,
-    &_paragraph {
-      max-width: 25rem;
-      margin-bottom: 1rem;
+    h1, p {
       color: white;
-      font-family: "Chelsea Market", cursive;
+      margin-bottom: 1rem;
     }
 
-    &_title {
-      margin-bottom: 0.25rem;
-      font-family: "Permanent Marker", cursive;
-    }
-
-    &_btn {
-      font-family: "Permanent Marker", cursive;
+    h1 {
+      border: 1px solid white;
+      padding: 1rem;
+      border-radius: 50px;
     }
   }
 }
 
-.main {
-  &_navbar {
-    &--item {
-      @include media-breakpoint-up(md){
-        justify-content: space-between;
-      }
-      @include flex(row, center, center);
-      background-color: $light-50;
-      border-radius: 0.75rem;
-      padding: 8px 16px;
-      margin-bottom: 6px;
-      transition: all 0.25s;
-      flex-wrap: wrap;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $dark;
-      }
-
-      &:hover .link-text,
-      &:hover .link-icon {
-        color: white;
-      }
-
-      .link-text {
-        font-family: "Chelsea Market", cursive;
-      }
-
-      .link-icon{
-        @include media-breakpoint-up(md){
-          display: block;
-        }
-        display: none;
-      }
-
-      .link-text,
-      .link-icon {
-        transition: 0.25s;
-      }
-
-      &.cat {
-        @include media-breakpoint-up(lg){
-          height: 80px;
-          flex-wrap: nowrap;
-        }
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-    }
-
-    &--menu {
-      @include media-breakpoint-up(md){
-        display: block;
-      }
-      display: flex;
-      justify-content: space-between;
-      list-style: none;
-      margin-bottom: 16px;
-    }
-
-    &--categories {
-      list-style: none;
-
-      &--fire {
-        color: $danger-color;
-        font-size: 2rem;
-      }
-
-      &--percentage {
-        font-size: 2rem;
-        color: $success-color;
-      }
-
-      &--products {
-        font-size: 2rem;
-        color: $secondary-color;
-      }
-    }
-  }
-
-  &_products {
-    height: fit-content;
-    width: 100%;
-  }
+.proof{
+  @include height(200px);
+  background-color: $dark;
+  margin-bottom: 24px;
 }

@@ -5,6 +5,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {environment} from "../environments/environment";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {environment} from "../environments/environment";
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'dchiripa'),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

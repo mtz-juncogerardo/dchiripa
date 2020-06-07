@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   backImageURL: Observable<string>;
   uploadPercent: Observable<number>;
   blockButton = false;
+  updateFormGroup: FormGroup;
 
   constructor(private form: FormBuilder, private firebase: FirebaseService, private afs: AngularFireStorage) {
     this.productForm = this.form.group({
@@ -36,6 +37,17 @@ export class ProductsComponent implements OnInit {
       descountPrice: '',
       imageFront: '',
       imageBack: ''
+    });
+
+    this.updateFormGroup = this.form.group({
+      id: '',
+      updateName: ['', [Validators.required]],
+      updateCategory: 'Tablas',
+      updateStock: 1,
+      updateDescription: ['', [Validators.required]],
+      updatePrice: ['', [Validators.required]],
+      updateDescount: false,
+      updateDescountPrice: '',
     });
   }
 
@@ -79,9 +91,38 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  updateProduct(product: Product) {
-    this.firebase.updateProduct(product)
-      .then(() => console.log('yei'));
+  openUpdateModal(product: Product) {
+    this.updateFormGroup.patchValue({id: product.id}) ;
+    this.updateFormGroup.patchValue({updateName: product.name}) ;
+    this.updateFormGroup.patchValue({updateCategory: product.category}) ;
+    this.updateFormGroup.patchValue({updateStock: product.stock}) ;
+    this.updateFormGroup.patchValue({updateDescription: product.description}) ;
+    this.updateFormGroup.patchValue({updatePrice: product.price}) ;
+    this.updateFormGroup.patchValue({updateDescount: product.descount}) ;
+    this.updateFormGroup.patchValue({updateDescountPrice: product.descountPrice}) ;
+  }
+
+  updateForm(formValues: any) {
+   const updateValues = {
+     id: formValues.id,
+     name: formValues.updateName,
+     category: formValues.updateCategory,
+     stock: formValues.updateStock,
+     description: formValues.updateDescription,
+     price: formValues.updatePrice,
+     descount: formValues.updateDescount,
+     descountPrice: formValues.updateDescountPrice
+   }
+
+    // Condition to delete the value of descountPrice if descount is set to false.
+    if (!updateValues.descount) {
+      updateValues.descountPrice = '';
+    }
+
+   this.firebase.updateProduct(updateValues)
+     .then(() => {
+       Swal.fire('Se han guardado los nuevos cambios al producto').then(() => window.location.reload());
+     });
   }
 
   deleteProduct(id: string) {

@@ -1,107 +1,85 @@
-<section class="navbar">
-  <div class="container pt-3">
-    <div class="row w-100 align-items-center justify-content-between">
-      <div class="col-3">
-        <div class="navbar_logo">
-          <img src="../../assets/images/Logotipo_Ruberik.png" alt="" />
-          <span>D'Chiripa Skateboarding</span>
+<section class="navbar-section">
+  <nav class="navbar_nav navbar-light bg-light">
+    <div class="container">
+      <div class="row w-100">
+        <div class="col-lg-3">
+          <a class="navbar-brand" href="#">
+            <img src="https://dchiripaskate.com/assets/images/Producto_Skateboard/Logotipo_Ruberik.png" width="30"
+                 height="30" class="d-inline-block align-top" alt="">
+            D'chiripa
+          </a>
         </div>
-      </div>
 
-      <div class="col-3 float-right">
-        <div class="navbar_icons">
-          <div class="navbar_icons--login">
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="navbar_cart">
-            <i class="fab fa-opencart"></i>
-          </div>
+        <div class="col-lg-9 d-flex justify-content-end">
+          <ul class="navbar_menu">
+            <li>
+              <a>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a>
+                Contacto
+              </a>
+            </li>
+            <li>
+              <a>
+                Nosotros
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar_shop-menu">
+            <button class="btn btn-dark btn-sm text-white">
+              <i class="fas fa-user-astronaut"></i>
+              <span>Inicia sesión</span>
+            </button>
+            <button class="btn btn-outline-dark btn-sm">
+              <i class="fas fa-shopping-cart"></i>
+              <span>0 / Articulos en carrito</span>
+            </button>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </section>
 
 <section class="carousel">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-
-          <ngx-slick-carousel class="slick-carousel" #slickModal="slick-carousel" [config]="slideConfig">
-            <!-- SlickItem -->
-            <div ngxSlickItem class="slide position-relative">
-              <img class="carousel_container_bg" src="../../assets/images/skatewallpaper.jpg" alt="">
-              <div class="carousel_container">
-                <h2 class="carousel_container_title">Las mejores patinetas al 50% de Descuento</h2>
-                <p class="carousel_container_paragraph">Increibles Diseños</p>
-                <button class="btn btn-dark carousel_container_btn">Checar Articulos</button>
-              </div>
-            </div>
-            <!-- /SlickItem -->
-            <!-- SlickItem -->
-            <div ngxSlickItem class="slide position-relative">
-              <img class="carousel_container_bg" src="../../assets/images/skatewall.jpg" alt="">
-              <div class="carousel_container">
-                <h2 class="carousel_container_title">Patina como los mejores</h2>
-                <p class="carousel_container_paragraph">Checa la nueva daewon song</p>
-                <button class="btn btn-dark carousel_container_btn">Checar Articulos</button>
-              </div>
-            </div>
-            <!-- /SlickItem -->
-            </ngx-slick-carousel>
-
-        </div>
+  <ngx-slick-carousel class="slick-carousel" #slickModal="slick-carousel" [config]="slideConfig">
+    <!-- SlickItem -->
+    <div ngxSlickItem class="slide carousel_slide">
+      <div class="carousel_text">
+        <h1>Checa nuestros ultimos descuentos</h1>
+        <p>Patinetas con el 50% de descuento</p>
+        <button class="btn btn-light">Ir a la Tienda</button>
       </div>
     </div>
+    <!-- /SlickItem -->
+    <!-- SlickItem -->
+    <div ngxSlickItem class="slide carousel_slide">
+      <div class="carousel_text">
+        <h1>Checa nuestros ultimos descuentos</h1>
+        <p>Patinetas con el 50% de descuento</p>
+        <button class="btn btn-light">Ir a la Tienda</button>
+      </div>
+    </div>
+    <!-- /SlickItem -->
+  </ngx-slick-carousel>
 </section>
 
-<section class="main">
+<section class="categories">
   <div class="container">
     <div class="row">
-      <!--MENU COLUMN-->
-      <div class="col-md-2 col-sm-12">
-        <nav class="main_navbar">
-          <ul class="main_navbar--menu">
-            <li class="main_navbar--item">
-              <p class="link-text">Inicio</p>
-              <i class="link-icon fas fa-home"></i>
-            </li>
-            <li class="main_navbar--item">
-              <p class="link-text">Nosotros</p>
-              <i class="link-icon fas fa-user-astronaut"></i>
-            </li>
-            <li class="main_navbar--item">
-              <p class="link-text">Contacto</p>
-              <i class="link-icon fas fa-headset"></i>
-            </li>
-          </ul>
-
-          <ul class="main_navbar--categories">
-            <li class="main_navbar--item cat">
-              <p class="link-text">Nuevos Productos!</p>
-              <i class="main_navbar--categories--fire fas fa-fire"></i>
-            </li>
-            <li class="main_navbar--item cat">
-              <p class="link-text">Ultimos Descuentos!</p>
-              <i class="main_navbar--categories--percentage fas fa-percent"></i>
-            </li>
-            <li class="main_navbar--item cat">
-              <p class="link-text">Nuestra Tienda</p>
-              <i class="main_navbar--categories--products fab fa-shopify"></i>
-            </li>
-          </ul>
-        </nav>
+      <div class="col-lg-6">
+        <div class="proof"></div>
       </div>
-      <!--/END OF MENU COLUMN-->
-
-      <div class="col-md-10 col-sm-12">
-        <div class="main_products bg-dark">
-          <router-outlet></router-outlet>
-        </div>
+      <div class="col-lg-6">
+        <div class="proof"></div>
+      </div>
+      <div class="col-lg-12">
+        <div class="proof"></div>
       </div>
     </div>
   </div>
-  <nav>
-    <ul></ul>
-  </nav>
 </section>

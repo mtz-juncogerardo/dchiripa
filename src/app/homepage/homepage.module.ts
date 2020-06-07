@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
@@ -15,6 +16,7 @@ import { environment } from '../../environments/environment';
     HomepageRoutingModule,
     ComponentsModule,
     SlickCarouselModule,
+    MatMenuModule
   ]
 })
 export class HomepageModule { }

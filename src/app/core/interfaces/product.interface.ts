@@ -7,6 +7,6 @@ export class Product {
   price: number;
   descount: boolean;
   descountPrice?: number;
-  imageBack: string;
-  imageFront: string;
+  imageBack?: string;
+  imageFront?: string;
 }
