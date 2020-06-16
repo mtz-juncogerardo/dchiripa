@@ -13,7 +13,6 @@ export class ProductsService {
   products: Observable<Product[]>;
   productDoc: AngularFirestoreDocument<Product>;
 
-
   constructor(public afs: AngularFirestore) {
 
     this.productsCollection = this.afs.collection('products');

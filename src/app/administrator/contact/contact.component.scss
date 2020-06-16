@@ -1,0 +1,13 @@
+.form {
+  background-color: white;
+  padding: 32px;
+  position: relative;
+  top: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid gray;
+  margin-bottom: 1rem;
+}
