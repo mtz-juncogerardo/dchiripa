@@ -1,0 +1,33 @@
+@import '../../../assets/styles/mixins';
+
+.slider {
+  padding: 32px 0px;
+
+  &_card {
+    @include height(250px);
+    @include width(100%);
+    @include flex(column, center, center);
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 4px 0 rgba(43, 48, 74, 0.12), 0 8px 16px 0 rgba(43, 48, 74, 0.08);
+
+    img {
+      height: 100px;
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: auto;
+    }
+
+    &--description, &--button, &--title {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    &--config{
+      width: 100%;
+      margin-top: auto;
+      @include flex(row, space-around, center);
+    }
+  }
+}

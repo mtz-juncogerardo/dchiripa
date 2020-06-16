@@ -8,10 +8,11 @@ import { ProductsComponent } from './products/products.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { SliderComponent } from './slider/slider.component';
 
 
 @NgModule({
-  declarations: [AdministratorComponent, ProductsComponent],
+  declarations: [AdministratorComponent, ProductsComponent, SliderComponent],
   imports: [
     CommonModule,
     ComponentsModule,

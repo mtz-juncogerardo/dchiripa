@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseService } from '../../core/services/firebase.service';
+import { ProductsService } from '../../core/services/products.service';
 import { Product } from '../../core/interfaces/product.interface';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
   blockButton = false;
   updateFormGroup: FormGroup;
 
-  constructor(private form: FormBuilder, private firebase: FirebaseService, private afs: AngularFireStorage) {
+  constructor(private form: FormBuilder, private firebase: ProductsService, private afs: AngularFireStorage) {
     this.productForm = this.form.group({
       id: '',
       name: ['', [Validators.required]],

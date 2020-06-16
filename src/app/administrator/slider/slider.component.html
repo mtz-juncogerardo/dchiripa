@@ -1,0 +1,92 @@
+<section class="slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+          <button class="btn btn-outline-light" data-toggle="modal" data-target="#addSlideModal">
+            <i class="fas fa-plus-circle text-success"></i>
+            Añadir Slide
+          </button>
+      </div>
+
+      <!-- SLIDERS -->
+      <div class="col-lg-4 mb-3" *ngFor="let slide of slides">
+        <div class="slider_card">
+          <img [src]="slide.image">
+          <span class="slider_card--title"><strong>TITULO: </strong>{{slide?.title}}</span>
+          <span class="slider_card--description"><strong>DESCRIPCIÓN: </strong>{{slide?.description}}</span>
+          <span class="slider_card--button"><strong>BOTÓN: </strong>{{slide?.buttonText}}</span>
+          <div class="slider_card--config">
+            <button class="btn btn-danger btn-sm" (click)="deleteSlide(slide.id)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--MODAL FOR ADDING SLIDES-->
+<div class="modal fade" id="addSlideModal" tabindex="-1" role="dialog" aria-labelledby="addSlideModalTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSlideModalTitle">Slide Nuevo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="slideForm">
+          <div class="form-group">
+            <label for="title">Titulo</label>
+            <input formControlName="title" id="title" type="text" class="form-control" placeholder="Titulo que aparecera en el slide">
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input formControlName="description" id="description" type="text" class="form-control"
+                   placeholder="Subtitulo o detalle que aparece debajo del titulo">
+          </div>
+          <div class="form-group">
+            <label for="buttonText">Botón</label>
+            <input formControlName="buttonText" id="buttonText" type="text" class="form-control"
+                   placeholder="Texto que aparece en el boton (ej:'Hazme Click!')">
+          </div>
+          <div class="form-group">
+            <label for="buttonURL">¿A que pagina debe redirigir el boton?</label>
+            <select formControlName="buttonURL" class="form-control" id="buttonURL">
+              <option>productos</option>
+              <option>productos/descuentos</option>
+              <option>productos/categoria/tablas</option>
+              <option>productos/categoria/ruedas</option>
+              <option>productos/categoria/trucks</option>
+              <option>productos/categoria/tornillos</option>
+              <option>productos/categoria/tennis</option>
+              <option>productos/categoria/gorras</option>
+              <option>productos/categoria/ceras</option>
+              <option>productos/categoria/baleros</option>
+              <option>productos/categoria/playeras</option>
+              <option>productos/categoria/mochilas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input (change)="loadImage($event)" type="file" class="custom-file-input"
+                     id="image" accept=".png,.jpg">
+              <label class="custom-file-label" for="image">Cargar Imagen Frontal</label>
+              <img class="h-100" id="slideImage" *ngIf="slideImageURL" [src]="slideImageURL | async" alt="">
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+        <button (click)="addSlide(slideForm.value)" class="btn btn-success"
+                [disabled]="slideForm.invalid || !slideImageURL || blockButton">
+          {{ blockButton ? 'Cargando Imagen' : 'Añadir Slide' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

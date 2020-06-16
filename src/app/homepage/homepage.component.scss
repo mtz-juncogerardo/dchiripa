@@ -8,10 +8,16 @@
   }
 
   &_menu, &_shop-menu {
-    @include flex(row, flex-end, center);
+    @include  media-breakpoint-up(lg) {
+      justify-content: flex-end;
+    }
+    @include flex(row, flex-start, center);
 
     li, button {
-      margin: 0px 16px;
+      @include media-breakpoint-up(lg) {
+        margin: 0px 16px;
+      }
+      margin-right: 16px;
       @include flex(row, space-between, center);
 
       span {
@@ -27,24 +33,45 @@
   }
 
   &_menu {
-    border-right: 1px solid $dark;
+    @include media-breakpoint-up(lg) {
+      border-right: 1px solid $dark;
+      margin-bottom: 0;
+    }
+
+    margin-bottom: 8px;
   }
 }
 
 .carousel {
-  margin-bottom: 96px;
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 96px;
+  }
+  margin-bottom: 5rem;
 
   &_slide {
     @include height(420px);
     @include background-image(cover, center);
     background-color: $dark;
     width: 100vw;
+    position: relative;
+  }
+
+  &_img-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
   }
 
   &_text{
     @include wh(100%);
     @include flex(column, center, center);
     text-align: center;
+    position: relative;
+    z-index: 3;
 
     h1, p {
       color: white;
@@ -60,7 +87,7 @@
 }
 
 .proof{
-  @include height(200px);
+  @include height(300px);
   background-color: $dark;
   margin-bottom: 24px;
 }

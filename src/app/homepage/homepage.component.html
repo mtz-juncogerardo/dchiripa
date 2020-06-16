@@ -10,35 +10,37 @@
           </a>
         </div>
 
-        <div class="col-lg-9 d-flex justify-content-end">
-          <ul class="navbar_menu">
-            <li>
-              <a>
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a>
-                Contacto
-              </a>
-            </li>
-            <li>
-              <a>
-                Nosotros
-              </a>
-            </li>
-          </ul>
+        <div class="col-lg-9">
+          <div class="row p-0 justify-content-lg-end justify-content-md-start">
+            <ul class="navbar_menu col-md-8">
+              <li>
+                <a>
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a>
+                  Contacto
+                </a>
+              </li>
+              <li>
+                <a>
+                  Nosotros
+                </a>
+              </li>
+            </ul>
 
-          <ul class="navbar_shop-menu">
-            <button class="btn btn-dark btn-sm text-white">
-              <i class="fas fa-user-astronaut"></i>
-              <span>Inicia sesión</span>
-            </button>
-            <button class="btn btn-outline-dark btn-sm">
-              <i class="fas fa-shopping-cart"></i>
-              <span>0 / Articulos en carrito</span>
-            </button>
-          </ul>
+            <ul class="navbar_shop-menu col-md-4">
+              <button class="btn btn-dark btn-sm text-white">
+                <i class="fas fa-user-astronaut"></i>
+                <span>Inicia Sesión</span>
+              </button>
+              <button class="btn btn-outline-dark btn-sm">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0 Articulos</span>
+              </button>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -48,20 +50,15 @@
 <section class="carousel">
   <ngx-slick-carousel class="slick-carousel" #slickModal="slick-carousel" [config]="slideConfig">
     <!-- SlickItem -->
-    <div ngxSlickItem class="slide carousel_slide">
+    <div ngxSlickItem class="slide carousel_slide"
+         *ngFor="let slide of slides"
+         [ngStyle]="{'background-image': 'url(' + slide.image + ')'}">
+      <!--Image OVERLAY -->
+      <div class="carousel_img-overlay"></div>
       <div class="carousel_text">
-        <h1>Checa nuestros ultimos descuentos</h1>
-        <p>Patinetas con el 50% de descuento</p>
-        <button class="btn btn-light">Ir a la Tienda</button>
-      </div>
-    </div>
-    <!-- /SlickItem -->
-    <!-- SlickItem -->
-    <div ngxSlickItem class="slide carousel_slide">
-      <div class="carousel_text">
-        <h1>Checa nuestros ultimos descuentos</h1>
-        <p>Patinetas con el 50% de descuento</p>
-        <button class="btn btn-light">Ir a la Tienda</button>
+        <h1>{{slide?.title}}</h1>
+        <p>{{slide?.description}}</p>
+        <button [routerLink]="slide?.buttonURL" class="btn btn-light">{{slide?.buttonText}}</button>
       </div>
     </div>
     <!-- /SlickItem -->
