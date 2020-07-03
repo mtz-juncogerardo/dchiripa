@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import {MatMenuModule} from '@angular/material/menu';
 
 import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
 import { ComponentsModule } from '../core/components/components.module';
 import { NosotrosComponent } from './nosotros/nosotros.component';
-import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [HomepageComponent, NosotrosComponent],
@@ -15,8 +13,7 @@ import { environment } from '../../environments/environment';
     CommonModule,
     HomepageRoutingModule,
     ComponentsModule,
-    SlickCarouselModule,
-    MatMenuModule
+    SlickCarouselModule
   ]
 })
 export class HomepageModule { }

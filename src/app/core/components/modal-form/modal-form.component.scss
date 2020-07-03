@@ -1,0 +1,14 @@
+.form {
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 2rem;
+}

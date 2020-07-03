@@ -3,7 +3,7 @@ import { Address } from './address.interface';
 
 export class Purchase {
   userId: string;
-  product: Product[];
+  products: Product[];
   buyDate: Date;
   address: Address;
 }

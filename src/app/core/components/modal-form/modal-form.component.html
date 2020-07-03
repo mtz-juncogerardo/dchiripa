@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <mat-form-field appearance="legacy">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Direccion (Esta se usa Para la Entrega)</mat-label>
+    <textarea matInput placeholder="Calle, Colonia, CP, Ciudad" [formControl]="address" required></textarea>
+    <mat-error *ngIf="address.invalid">{{getErrorMessage('address')}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input matInput placeholder="8 caracteres minimo" [formControl]="password" [type]="hide ? 'password' : 'text'"
+           required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Telefono (Se usara en caso de que halla un problema con algún pedido)</mat-label>
+    <input matInput placeholder="442000000" [formControl]="phone" required>
+    <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Nombre(s)</mat-label>
+    <input matInput placeholder="Jose Juan" [formControl]="firstName" required>
+    <mat-error *ngIf="firstName.invalid">{{getErrorMessage('firstName')}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <mat-label>Apellidos</mat-label>
+    <input matInput placeholder="Cruz Flores" [formControl]="lastName" required>
+    <mat-error *ngIf="lastName.invalid">{{getErrorMessage('lastName')}}</mat-error>
+  </mat-form-field>
+</div>

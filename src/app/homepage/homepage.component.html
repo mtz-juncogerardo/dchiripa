@@ -12,7 +12,7 @@
 
         <div class="col-lg-9">
           <div class="row p-0 justify-content-lg-end justify-content-md-start">
-            <ul class="navbar_menu col-md-8">
+            <ul class="navbar_menu col-md-7">
               <li>
                 <a>
                   Inicio
@@ -30,8 +30,8 @@
               </li>
             </ul>
 
-            <ul class="navbar_shop-menu col-md-4">
-              <button class="btn btn-dark btn-sm text-white">
+            <ul class="navbar_shop-menu col-md-5">
+              <button data-toggle="modal" data-target="#signinModal" class="btn btn-dark btn-sm text-white">
                 <i class="fas fa-user-astronaut"></i>
                 <span>Inicia Sesión</span>
               </button>
@@ -80,3 +80,13 @@
     </div>
   </div>
 </section>
+
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-modal-form></app-modal-form>
+      </div>
+    </div>
+  </div>
+</div>

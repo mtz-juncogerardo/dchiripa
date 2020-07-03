@@ -33,12 +33,8 @@
   }
 
   &_menu {
-    @include media-breakpoint-up(lg) {
       border-right: 1px solid $dark;
       margin-bottom: 0;
-    }
-
-    margin-bottom: 8px;
   }
 }
 

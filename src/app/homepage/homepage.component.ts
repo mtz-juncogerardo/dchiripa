@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import {SliderService} from "../core/services/slider.service";
 import {Slider} from "../core/interfaces/slider.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
 
   slides: Slider[] = []
+  wantsToSignin = true;
 
   slideConfig = {
     slidesToShow: 1,
@@ -26,7 +28,7 @@ export class HomepageComponent implements OnInit {
     "prevArrow": "<div class='nav-prev home-slider-prev'><i class='fas fa-caret-right'></i></div>",
   };
 
-  constructor(private sliderService: SliderService) { }
+  constructor(private sliderService: SliderService, private router: Router) { }
 
   ngOnInit(): void {
     this.sliderService.getSlides().toPromise()
@@ -36,6 +38,10 @@ export class HomepageComponent implements OnInit {
           this.slides.push(data);
         });
       });
+  }
+
+  toogleFormType() {
+    this.wantsToSignin ? this.wantsToSignin = false : this.wantsToSignin = true;
   }
 
 }
